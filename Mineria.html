@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECNOCOMMEND - Encuesta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        select, input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="Mineria.php" method="post">
+        <h1>TECNOCOMMEND</h1>
+
+        <label>¿Cuánto piensa gastar primo?</label>
+        <select name="precio_venta">
+            <option value="0-290">0-290</option>
+            <option value="201-400">201-400</option>
+            <option value="401-600">401-600</option>
+        </select>
+
+        <label>¿Qué tipo de procesador prefieres?</label>
+        <div>
+            <input type="checkbox" name="Procesador[]" value="QualcomSnapDragon"> Qualcom
+            <input type="checkbox" name="Procesador[]" value="MediaTek"> MediaTek
+            <input type="checkbox" name="Procesador[]" value="Dimensity"> Dimensity
+        </div>
+
+        <label>¿Qué tipo de uso le piensas dar?</label>
+        <div>
+            <input type="checkbox" name="RAM[]" value="6 Gb"> Uso domestico sin exigir demasiado
+            <input type="checkbox" name="RAM[]" value="8 Gb"> Uso domestico como redes Sociales mensajes y llamadas.
+            <input type="checkbox" name="RAM[]" value="12 Gb"> Pienso editar fotos y videos, además de realizar tareas con mi equipo.
+            <input type="checkbox" name="RAM[]" value="16 Gb"> Pienso participar en juegos competitivos con mi celular
+        </div>
+
+        <label>¿Cuánto Almacenamiento necesitarás?</label>
+        <div>
+            <input type="checkbox" name="Almacenamiento[]" value="64 Gb"> Lo necesario para fotos y videos.
+            <input type="checkbox" name="Almacenamiento[]" value="128 Gb"> Necesito instalar varias apps y estas se actualizan con bastante regularidad.
+            <input type="checkbox" name="Almacenamiento[]" value="256 Gb"> No me basta con lo que me ofrece la nube
+        </div>
+
+        <label>¿Cómo quieres que sean tus fotografías?</label>
+        <div>
+            <input type="checkbox" name="Camara[]" value="48MP"> Usaré la cámara de forma casual.
+            <input type="checkbox" name="Camara[]" value="60MP"> Soy de tomar fotos a los restaurantes a los que voy.
+            <input type="checkbox" name="Camara[]" value="128MP"> Soy de tomarme muchas fotos en el gimnasio, universidad o el trabajo
+            <input type="checkbox" name="Camara[]" value="200MP"> Soy el fotógrafo del grupo.
+        </div>
+
+        <label>¿Cómo quieres ver tus videos?</label>
+        <div>
+            <input type="checkbox" name="Pantalla[]" value="OLED"> No usaré mucho mi teléfono para ver videos.
+            <input type="checkbox" name="Pantalla[]" value="AMOLED"> Estoy acostumbrado a videos de alta calidad.
+            <input type="checkbox" name="Pantalla[]" value="LCD"> Veo bastante Streaming.
+            <input type="checkbox" name="Pantalla[]" value="IPS"> Necesito Netflix para seguir viviendo.
+        </div>
+
+        <button type="submit">Enviar respuestas</button>
+    </form>
+</body>
+</html>
