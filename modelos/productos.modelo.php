@@ -39,39 +39,31 @@ class ModeloProductos{
 	/*=============================================
 	REGISTRO DE PRODUCTO
 	=============================================*/
-	public static function mdlIngresarProducto($tabla, $datos) {
-		try {
-			$pdo = Conexion::conectar();
-	
-			// Crea la sentencia SQL con marcadores de posición
-			$stmt = $pdo->prepare("INSERT INTO $tabla (id_categoria, codigo, descripcion, stock, Procesador, RAM, Almacenamiento, Camara, Pantalla, precio_compra, precio_venta, imagen) VALUES (:id_categoria, :codigo, :descripcion, :stock, :Procesador, :RAM, :Almacenamiento, :Camara, :Pantalla, :precio_compra, :precio_venta, :imagen)");
-	
-			// Vincula los parámetros
-			$stmt->bindParam(':id_categoria', $datos['id_categoria']);
-			$stmt->bindParam(':codigo', $datos['codigo']);
-			$stmt->bindParam(':descripcion', $datos['descripcion']);
-			$stmt->bindParam(':stock', $datos['stock']);
-			$stmt->bindParam(':Procesador', $datos['Procesador']);
-			$stmt->bindParam(':RAM', $datos['RAM']);
-			$stmt->bindParam(':Almacenamiento', $datos['Almacenamiento']);
-			$stmt->bindParam(':Camara', $datos['Camara']);
-			$stmt->bindParam(':Pantalla', $datos['Pantalla']);
-			$stmt->bindParam(':precio_compra', $datos['precio_compra']);
-			$stmt->bindParam(':precio_venta', $datos['precio_venta']);
-			$stmt->bindParam(':imagen', $datos['imagen']);
-	
-			// Ejecuta la sentencia
-			$stmt->execute();
-	
-			// Devuelve un mensaje de éxito
+	static public function mdlIngresarProducto($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, codigo, descripcion, imagen, stock, precio_compra, precio_venta) VALUES (:id_categoria, :codigo, :descripcion, :imagen, :stock, :precio_compra, :precio_venta)");
+
+		$stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_INT);
+		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
+		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
+		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
 			return "ok";
-		} catch (PDOException $e) {
-			// Maneja cualquier excepción de PDO
-			return "error: " . $e->getMessage();
-		} finally {
-			// Cierra la conexión
-			$pdo = null;
+
+		}else{
+
+			return "error";
+		
 		}
+
+		$stmt->close();
+		$stmt = null;
+
 	}
 
 	/*=============================================
@@ -79,18 +71,13 @@ class ModeloProductos{
 	=============================================*/
 	static public function mdlEditarProducto($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria = :id_categoria, descripcion = :descripcion, imagen = :imagen, stock = :stock, Procesador = :Procesador, RAM = :RAM, Camara = :Camara, Almacenamiento = :Almacenamiento, Pantalla = :Pantalla, precio_compra = :precio_compra, precio_venta = :precio_venta WHERE codigo = :codigo");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria = :id_categoria, descripcion = :descripcion, imagen = :imagen, stock = :stock, precio_compra = :precio_compra, precio_venta = :precio_venta WHERE codigo = :codigo");
 
 		$stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_INT);
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
-		$stmt->bindParam(":Procesador", $datos["Procesador"], PDO::PARAM_STR);
-		$stmt->bindParam(":RAM", $datos["RAM"], PDO::PARAM_STR);
-		$stmt->bindParam(":Almacenamiento", $datos["Almacenamiento"], PDO::PARAM_STR);
-		$stmt->bindParam(":Camara", $datos["Camara"], PDO::PARAM_STR);
-		$stmt->bindParam(":Pantalla", $datos["Pantalla"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
 
