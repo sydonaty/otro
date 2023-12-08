@@ -13,7 +13,7 @@ class TablaProductos{
  	 MOSTRAR LA TABLA DE PRODUCTOS
   	=============================================*/ 
 
-	  static public function mostrarTablaProductos(){
+	public function mostrarTablaProductos(){
 
 		$item = null;
     	$valor = null;
@@ -88,11 +88,6 @@ class TablaProductos{
 			      "'.$productos[$i]["descripcion"].'",
 			      "'.$categorias["categoria"].'",
 			      "'.$stock.'",
-				  "'.$productos[$i]["Procesador"].'",
-			      "'.$productos[$i]["RAM"].'",
-			      "'.$productos[$i]["Almacenamiento"].'",
-				  "'.$productos[$i]["Camara"].'",
-			      "'.$productos[$i]["Pantalla"].'",
 			      "'.$productos[$i]["precio_compra"].'",
 			      "'.$productos[$i]["precio_venta"].'",
 			      "'.$productos[$i]["fecha"].'",

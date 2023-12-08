@@ -10,7 +10,7 @@ class TablaProductosVentas{
  	 MOSTRAR LA TABLA DE PRODUCTOS
   	=============================================*/ 
 
-	public static function mostrarTablaProductosVentas(){
+	public function mostrarTablaProductosVentas(){
 
 		$item = null;
     	$valor = null;

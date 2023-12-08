@@ -11,9 +11,9 @@ class AjaxProductos{
   /*=============================================
   GENERAR CÓDIGO A PARTIR DE ID CATEGORIA
   =============================================*/
-  public  $idCategoria;
+  public $idCategoria;
 
-   public function ajaxCrearCodigoProducto(){
+  public function ajaxCrearCodigoProducto(){
 
   	$item = "id_categoria";
   	$valor = $this->idCategoria;
@@ -34,7 +34,7 @@ class AjaxProductos{
   public $traerProductos;
   public $nombreProducto;
 
-   public function  ajaxEditarProducto(){
+  public function ajaxEditarProducto(){
 
     if($this->traerProductos == "ok"){
 
