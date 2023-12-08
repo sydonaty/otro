@@ -6,7 +6,7 @@ class ControladorProductos{
 	MOSTRAR PRODUCTOS
 	=============================================*/
 
-	 public static function ctrMostrarProductos($item, $valor, $orden){
+	static public function ctrMostrarProductos($item, $valor, $orden){
 
 		$tabla = "productos";
 
@@ -20,17 +20,12 @@ class ControladorProductos{
 	CREAR PRODUCTO 
 	=============================================*/
 
-	public static function ctrCrearProducto(){
+	static public function ctrCrearProducto(){
 
 		if(isset($_POST["nuevaDescripcion"])){
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) &&
-			   preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoProcesador"]) &&	
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/',$_POST["nuevoRAM"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoAlmacenamiento"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoCamara"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPantalla"]) &&
+			   preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) &&	
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCompra"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])){
 
@@ -53,9 +48,7 @@ class ControladorProductos{
 
 					$directorio = "vistas/img/productos/".$_POST["nuevoCodigo"];
 
-					if (!is_dir($directorio)) {
-						mkdir($directorio);
-					}
+					mkdir($directorio, 0755);
 
 					/*=============================================
 					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
@@ -109,11 +102,6 @@ class ControladorProductos{
 							   "codigo" => $_POST["nuevoCodigo"],
 							   "descripcion" => $_POST["nuevaDescripcion"],
 							   "stock" => $_POST["nuevoStock"],
-							   "Procesador" => $_POST["nuevoProcesador"],
-							   "RAM" => $_POST["nuevoRAM"],
-							   "Almacenamiento" => $_POST["nuevoAlmacenamiento"],
-							   "Camara" => $_POST["nuevoCamara"],
-							   "Pantalla" => $_POST["nuevoPantalla"],
 							   "precio_compra" => $_POST["nuevoPrecioCompra"],
 							   "precio_venta" => $_POST["nuevoPrecioVenta"],
 							   "imagen" => $ruta);
@@ -169,17 +157,12 @@ class ControladorProductos{
 	EDITAR PRODUCTO
 	=============================================*/
 
-	 public static function ctrEditarProducto(){
+	static public function ctrEditarProducto(){
 
 		if(isset($_POST["editarDescripcion"])){
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDescripcion"]) &&
-			   preg_match('/^[0-9]+$/', $_POST["editarStock"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarProcesador"]) &&		
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarRAM"]) &&	
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarAlmacenamiento"]) &&	
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/',  $_POST["editarCamara"]) &&	
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/',  $_POST["editarPantalla"]) &&	
+			   preg_match('/^[0-9]+$/', $_POST["editarStock"]) &&	
 			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioCompra"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])){
 
@@ -268,11 +251,6 @@ class ControladorProductos{
 							   "codigo" => $_POST["editarCodigo"],
 							   "descripcion" => $_POST["editarDescripcion"],
 							   "stock" => $_POST["editarStock"],
-							   "Procesador" => $_POST["editarProcesador"],
-							   "RAM" => $_POST["editarRAM"],
-							   "Almacenamiento" => $_POST["editarAlmacenamiento"],
-							   "Pantalla" => $_POST["editarPantalla"],
-							   
 							   "precio_compra" => $_POST["editarPrecioCompra"],
 							   "precio_venta" => $_POST["editarPrecioVenta"],
 							   "imagen" => $ruta);
@@ -327,7 +305,7 @@ class ControladorProductos{
 	/*=============================================
 	BORRAR PRODUCTO
 	=============================================*/
-	public static function ctrEliminarProducto(){
+	static public function ctrEliminarProducto(){
 
 		if(isset($_GET["idProducto"])){
 
@@ -372,7 +350,7 @@ class ControladorProductos{
 	MOSTRAR SUMA VENTAS
 	=============================================*/
 
-	public static function ctrMostrarSumaVentas(){
+	static public function ctrMostrarSumaVentas(){
 
 		$tabla = "productos";
 

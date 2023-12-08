@@ -11,7 +11,7 @@ class ControladorVentas{
 	MOSTRAR VENTAS
 	=============================================*/
 
-	 public function ctrMostrarVentas($item, $valor){
+	static public function ctrMostrarVentas($item, $valor){
 
 		$tabla = "ventas";
 
@@ -25,7 +25,7 @@ class ControladorVentas{
 	CREAR VENTA
 	=============================================*/
 
-	public function ctrCrearVenta(){
+	static public function ctrCrearVenta(){
 
 		if(isset($_POST["nuevaVenta"])){
 
